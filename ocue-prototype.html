@@ -3318,7 +3318,10 @@ case 'dgalgo':{const n=S.cur;S.dp=0;v.split(',').forEach(x=>{const u=(S.gedit&&S
  case 'rxt':S.rx[v]=S.rx[v]?0:1;sheet(rxSheet());return
  case 'rxp':closeSheet();if(cur()!='rxv')S.stack.push('rxv');break;
  case 'rxprint':try{window.print()}catch(x){toast('此環境無法列印，請改用「下載檔案」')}return
- case 'rxdl':{const h='<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>學習履歷－鄭沅榳</title><style>body{font-family:\'Noto Sans TC\',sans-serif;max-width:820px;margin:24px auto;padding:0 16px;background:#f3f5fa}'+RXC+'</style><div class="rdoc">'+rxDoc()+'</div></html>',fn='學習履歷_鄭沅榳.html';
+ case 'rxdl':{const h='<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>學習履歷－鄭沅榳</title><style>body{font-family:\'Noto Sans TC\',sans-serif;max-width:820px;margin:24px auto;padding:0 16px;background:#f3f5fa}'+RXC+'
+/* standalone: fill the whole screen, never rely on JS-measured height */
+.phone{top:0!important;bottom:0!important;height:auto!important;min-height:100lvh}
+</style><div class="rdoc">'+rxDoc()+'</div></html>',fn='學習履歷_鄭沅榳.html';
   (async()=>{try{const d=window.claude&&window.claude.use?await window.claude.use('downloads'):null;if(d){await d.save({filename:fn,data:h});toast('已儲存履歷檔案');return}
    const b=new Blob([h],{type:'text/html'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);toast('已下載履歷檔案')}catch(x){toast(x&&x.code=='declined'?'已取消':'此環境無法下載，請改用「列印／存成 PDF」')}})();return}
  case 'myed':S.myed=S.myed?0:1;K=1;break;
